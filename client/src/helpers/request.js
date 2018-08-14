@@ -8,6 +8,7 @@ Request.prototype.get = function () {
 };
 
 Request.prototype.post = function (payload) {
+  console.log(this.url);
   return fetch(this.url, {
     method: 'POST',
     body: JSON.stringify(payload),

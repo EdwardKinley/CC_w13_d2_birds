@@ -47,6 +47,21 @@ const createRouter = function (collection) {
       });
   });
 
+  router.post('/', (req,res) => {
+    console.log("hello");
+    const newSighting = req.body;
+    collection.insertOne(newSighting)
+    .then(() =>{
+      return collection.find().toArray()
+    })
+    .then((docs) => {
+      res.json(docs);
+    })
+    .catch((err) =>{
+      console.error(err);
+    });
+  });
+
   return router;
 
 };
